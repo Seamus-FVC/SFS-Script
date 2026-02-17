@@ -43,7 +43,13 @@ def power_options():
     print("Power Options")
     choice = input("Please select 's' to shutdown, 'r' to restart your PC, or 'q' to abort to menu\n")
     if choice.lower() == "s":
-        subprocess.call(["shutdown", "/p"])
+        toggle = False
+        subprocess.call(["shutdown", "/s", "/t", "30"])
+        abort = input("Abort? (y/n)")
+        if abort.lower() == "y":
+            subprocess.call(["shutdown", "/a"])
+        else:
+            subprocess.call(["shutdown", "/p"])
 
     elif choice.lower() == "r":
         subprocess.call(["shutdown", "/p"])
