@@ -39,14 +39,26 @@ def mPing():
     for result in results:
         print(result)
 
+def power_options():
+    print("Power Options")
+    choice = input("Please select 's' to shutdown, 'r' to restart your PC, or 'q' to abort to menu\n")
+    if choice.lower() == "s":
+        subprocess.call(["shutdown", "/p"])
+
+    elif choice.lower() == "r":
+        subprocess.call(["shutdown", "/p"])
     
+    elif choice.lower() == "q":
+        menu(menu_option)
+    
+
 
 def menu_option(option, mPing):
     match option:
         case 1:
             mPing()
         case 2:
-            print("Laser sharks inbound")
+            power_options()
         case 3:
             print("Jim has been banished")
         case 4:
